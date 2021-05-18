@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+
+
+<div class="container-fluid alex">
+  <div class="row">
+    <div class="col-md-4"><h3 class="text-center my-4 search">Search for Weather:</h3>
+      <form [formGroup]='weatherSearchForm' (ngSubmit)="sendToApixu(weatherSearchForm.value)">
+        <div class="form-group">
+          <input
+            class="form-control"
+            type="text"
+            id="weatherLocation"
+            aria-describedby="weatherLocation"
+            placeholder="Please input a Location"
+            formControlName="location"
+          />
+         </div>
+         <div class="text-center">
+          <button type="submit" class="btn btn-success btn-md kopce">
+            Search for the weather</button>
+         </div>
+       </form>
+  </div>
+
+
+    <div id="weather_wrapper">
+      <div class="weatherCard">
+        <div class="currentTemp">
+          <span class="temp">{{ this.weatherData?.current.temperature }}&deg;</span>
+          <span class="location">{{ this.weatherData?.location.name }}, {{ this.weatherData?.location.country }}</span>
+        </div>
+        <div class="currentWeather">
+          <span class="conditions"><img [src]="this.weatherData?.current.weather_icons"></span>
+          <div class="info">
+            <span class="rain">{{this.weatherData?.current.precip}} MM</span>
+            <span class="wind">{{this.weatherData?.current.wind_speed}} KM/H</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="overlay"></div>
+  <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+    <source src="https://storage.googleapis.com/coverr-main/mp4/Mt_Baker.mp4" type="video/mp4">
+  </video>
+</div>
